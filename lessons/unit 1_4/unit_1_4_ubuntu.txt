@@ -44,9 +44,18 @@ sudo reboot
 
 ### Входим под root
 
+### Установка curl (under sudo su)
+apt install curl
+
+
+
 ### Установка Hass.io для 64 разрядных ARM
 curl -Lo installer.sh https://raw.githubusercontent.com/home-assistant/supervised-installer/master/installer.sh
-bash installer.sh --machine raspberrypi3-64
+
+### Перед установкой нужно исключить перезагрузку Network Manager, через редактирование файла installer.sh. (редактирование под суперюзером, файл расположен в корневой системе). Нужно закомментировать следующую строку:
+#systemctl restart “${SERVICE_NM}”
+
+bash installer.sh --machine raspberrypi4-64
 
 ### Веб интерфейс Home Assistant
 http://YOUR IP:8123/
